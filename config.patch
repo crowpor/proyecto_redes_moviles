@@ -1,0 +1,95 @@
+--- config.json	2018-07-17 13:57:37.418042000 -0400
++++ config_new.json	2018-07-17 13:10:36.237748258 -0400
+@@ -1,20 +1,44 @@
+ {
+-    "$schema": "https://raw.githubusercontent.com/crossbario/crossbar/master/crossbar.json",
+-    "version": 2,
+-    "controller": {
+-    },
++    "version": 3,
+     "workers": [
+         {
+             "type": "router",
+             "realms": [
+                 {
+-                    "name": "realm1",
++                    "name": "public",
++                    "template": false,
+                     "roles": [
+                         {
+                             "name": "anonymous",
+                             "permissions": [
+                                 {
+-                                    "uri": "",
++                                    "uri": "com.light.public.",
++                                    "match": "prefix",
++                                    "allow": {
++                                        "call": true,
++                                        "register": true,
++                                        "publish": true,
++                                        "subscribe": true
++                                    },
++                                    "disclose": {
++                                        "caller": true,
++                                        "publisher": true
++                                    },
++                                    "cache": true
++                                }
++                            ]
++                        }
++                    ]
++                },
++                {
++                    "name": "^realm-(?P<user>[a-z][a-z0-9_-]{2,8})$",
++                    "template": true,
++                    "roles": [
++                        {
++                            "name": "anonymous",
++                            "permissions": [
++                                {
++                                    "uri": "com.example.user.",
+                                     "match": "prefix",
+                                     "allow": {
+                                         "call": true,
+@@ -35,29 +59,23 @@
+             ],
+             "transports": [
+                 {
+-                    "type": "universal",
+-                    "endpoint": {
++                        "type": "web",
++                    	"endpoint": {
+                         "type": "tcp",
+                         "port": 8080
+                     },
+-                    "rawsocket": {
+-                    },
+-                    "websocket": {
++                    "paths": {
++                        "/": {
++                            "type": "static",
++                            "directory": "../web"
++                        },
+                         "ws": {
+-                            "type": "websocket"
+-                        }
+-                    },
+-                    "web": {
+-                        "paths": {
+-                            "/": {
+-                                "type": "static",
+-                                "directory": "../web",
+-                                "options": {
+-                                    "enable_directory_listing": true
++                            "type": "websocket",
++                            "auth": {
++                                "anonymous": {
++                                    "type": "static",
++                                    "role": "anonymous"
+                                 }
+-                            },
+-                            "info": {
+-                                "type": "nodeinfo"
+                             }
+                         }
+                     }
