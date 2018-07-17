@@ -1,5 +1,5 @@
 --- crossbar.json	2018-07-01 15:33:26.013605000 -0400
-+++ crossbar_new.json	2018-07-17 13:04:00.808420430 -0400
++++ crossbar_new.json	2018-07-17 13:10:36.237748258 -0400
 @@ -1,1365 +1,86 @@
  {
 -    "$schema":"http://json-schema.org/draft-04/schema#",
@@ -831,7 +831,7 @@
 -                        "shutdown-manual",
 -                        "shutdown-on-last-component-stopped"
                      ]
--                }
+                 }
 -            },
 -            "allOf": [
 -                { "$ref": "#/definitions/check_native_options" }
@@ -990,7 +990,6 @@
 -                            "description": "",
 -                            "type": "string"
 -                        }
-+                
 +            ],
 +            "transports": [
 +                {
