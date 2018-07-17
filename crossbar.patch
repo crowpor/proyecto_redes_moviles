@@ -1,5 +1,5 @@
 --- crossbar.json	2018-07-01 15:33:26.013605000 -0400
-+++ crossbar_new.json	2018-07-17 02:03:38.763631933 -0400
++++ crossbar_new.json	2018-07-17 13:04:00.808420430 -0400
 @@ -1,1365 +1,86 @@
  {
 -    "$schema":"http://json-schema.org/draft-04/schema#",
@@ -533,7 +533,7 @@
 -                                "cache": {
 -                                    "description": "",
 -                                    "type":"boolean"
-+    "version": 2,
++    "version": 3,
 +    "workers": [
 +        {
 +            "type": "router",
@@ -994,7 +994,7 @@
 +            ],
 +            "transports": [
 +                {
-+                        "type": "rawsocket",
++                        "type": "web",
 +                    	"endpoint": {
 +                        "type": "tcp",
 +                        "port": 8080

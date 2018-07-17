@@ -1,5 +1,5 @@
 {
-    "version": 2,
+    "version": 3,
     "workers": [
         {
             "type": "router",
@@ -59,7 +59,7 @@
             ],
             "transports": [
                 {
-                        "type": "rawsocket",
+                        "type": "web",
                     	"endpoint": {
                         "type": "tcp",
                         "port": 8080
